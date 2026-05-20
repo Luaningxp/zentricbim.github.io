@@ -27,7 +27,7 @@
             padding: 0 20px;
         }
 
-        /* ========== ENCABEZADO (mismo estilo actual) ========== */
+        /* ========== ENCABEZADO ========== */
         header {
             background: #0a2b3e;
             color: white;
@@ -62,26 +62,7 @@
             text-decoration: underline;
         }
 
-        /* ========== HERO ========== */
-        .hero {
-            background: #0f3b4f;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-        }
-
+        /* Botón global */
         .btn {
             display: inline-block;
             background: #ff8c42;
@@ -98,7 +79,7 @@
             background: #e07a2e;
         }
 
-        /* ========== SECCIÓN SERVICIOS (NUEVA CON PAQUETES) ========== */
+        /* ========== SECCIÓN SERVICIOS ========== */
         .servicios {
             padding: 60px 0;
             background: white;
@@ -184,22 +165,6 @@
             margin: 0.5rem 0 0.8rem;
         }
 
-        .precio {
-            margin: 0.8rem 0;
-        }
-
-        .precio .desde {
-            font-size: 0.85rem;
-            color: #4a5568;
-        }
-
-        .precio .monto {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: #0a2b3e;
-            font-family: 'Inter', sans-serif;
-        }
-
         .card-contenido {
             padding: 1.2rem 1.5rem 1.8rem;
         }
@@ -270,49 +235,6 @@
             background: #e07a2e;
         }
 
-        .sello-certificacion {
-            width: 130px;
-            height: 130px;
-            margin: 1.5rem auto;
-            background: white;
-            border-radius: 50%;
-            border: 3px solid #d4af37;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .texto-curvo {
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #0a2b3e;
-            line-height: 1.2;
-        }
-
-        .texto-curvo span {
-            color: #b8860b;
-        }
-
-        .centro-sello {
-            background: #f9f7f0;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 5px auto;
-        }
-
-        .check-icon {
-            font-size: 1.6rem;
-        }
-
         .iso-footer {
             text-align: center;
             margin-top: 2rem;
@@ -326,7 +248,7 @@
             gap: 1rem;
         }
 
-        /* ========== SOFTWARE (se mantiene) ========== */
+        /* ========== SOFTWARE ========== */
         .software {
             background: #eef2f5;
             text-align: center;
@@ -417,13 +339,139 @@
             font-size: 14px;
         }
 
+        /* ========== HERO CON CARRUSEL ========== */
+        .hero-carousel {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 43, 62, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content .container {
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 3;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #ff8c42;
+            width: 30px;
+            border-radius: 10px;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 28px;
+            .hero-content h1 {
+                font-size: 32px;
             }
-            .hero p {
-                font-size: 18px;
+            .hero-content p {
+                font-size: 16px;
+            }
+            .carousel-btn {
+                font-size: 20px;
+                padding: 8px 14px;
             }
             .logo {
                 font-size: 24px;
@@ -439,12 +487,21 @@
             .titulo-paquete h3 {
                 font-size: 1.4rem;
             }
+            .hero h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 26px;
+            }
+            .contacto-info {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ENCABEZADO (original) -->
+    <!-- ENCABEZADO -->
     <header>
         <div class="container">
             <div class="logo">ZENTRYC</div>
@@ -456,32 +513,25 @@
         </div>
     </header>
 
-    <!-- HERO CON CARRUSEL DE IMÁGENES -->
+    <!-- HERO CON CARRUSEL -->
     <section class="hero-carousel">
-        <!-- Contenedor de imágenes -->
         <div class="carousel-container">
             <div class="carousel-slide active" style="background-image: url('https://luaningxp.github.io/zentricbim.github.io/proyecto1.webp');"></div>
             <div class="carousel-slide" style="background-image: url('https://luaningxp.github.io/zentricbim.github.io/proyecto2.webp');"></div>
-            <div class="carousel-slide" style="background-image: url('https://luaningxp.github.io/zentricbim.github.io/proyecto3.webp');"></div>                        
+            <div class="carousel-slide" style="background-image: url('https://luaningxp.github.io/zentricbim.github.io/proyecto3.webp');"></div>
         </div>
         
-        <!-- Overlay oscuro para legibilidad -->
         <div class="carousel-overlay"></div>
         
-        <!-- Flecha izquierda -->
         <button class="carousel-btn prev" id="prevBtn">❮</button>
-        
-        <!-- Flecha derecha -->
         <button class="carousel-btn next" id="nextBtn">❯</button>
         
-        <!-- Indicadores (puntos) -->
         <div class="carousel-dots">
             <span class="dot active" data-index="0"></span>
             <span class="dot" data-index="1"></span>
             <span class="dot" data-index="2"></span>
         </div>
         
-        <!-- Contenido del texto -->
         <div class="hero-content">
             <div class="container">
                 <h1>¿Tu próximo proyecto requiere BIM?<br>Nosotros lo implementamos.</h1>
@@ -491,11 +541,11 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS CON PAQUETES (nuevo contenido, paleta original) -->
+    <!-- SECCIÓN SERVICIOS -->
     <section id="servicios" class="servicios">
         <div class="container">
             <div class="badge-obligatorio">
-                📅 Prepara tus proyectos para la aplicación obligaroria de BIM!
+                📅 Prepara tus proyectos para la aplicación obligatoria de BIM!
             </div>
             <h2>Servicios BIM especializados</h2>
             <div class="paquetes-grid">
@@ -540,7 +590,7 @@
                     <div class="card-contenido">
                         <div class="entregable-principal">
                             <strong>✔ Entregable principal</strong>
-                            <p> Modelo BIM LOD 350-400 + PEB + MIDP + TIDPs (Guía Nacional BIM)</p>
+                            <p>Modelo BIM LOD 350-400 + PEB + MIDP + TIDPs (Guía Nacional BIM)</p>
                         </div>
                         <ul class="lista-servicios">
                             <li>Modelo BIM LOD 350-400</li>
@@ -560,13 +610,13 @@
                 </div>
             </div>
 
-                    <!-- NUEVA SECCIÓN: SERVICIOS ADICIONALES -->
-                    <div style="margin-top: 3rem; background: #f7fafc; border-radius: 24px; padding: 1.8rem; border: 1px solid #e2edf7;">
-                        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0a2b3e; text-align: center; margin-bottom: 1rem;">Servicios Adicionales de: Automatización BIM</h3>
-                        <p style="text-align: center; max-width: 800px; margin: 0 auto 1.8rem auto; color: #4a5568;">Optimizamos tus flujos de trabajo con soluciones a medida para equipos BIM exigentes.</p>
-            
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-                        <div style="background: white; padding: 1.2rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #e9f0f5;">
+            <!-- SERVICIOS ADICIONALES: Automatización BIM -->
+            <div style="margin-top: 3rem; background: #f7fafc; border-radius: 24px; padding: 1.8rem; border: 1px solid #e2edf7;">
+                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0a2b3e; text-align: center; margin-bottom: 1rem;">Servicios Adicionales de: Automatización BIM</h3>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 1.8rem auto; color: #4a5568;">Optimizamos tus flujos de trabajo con soluciones a medida para equipos BIM exigentes.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                    <div style="background: white; padding: 1.2rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #e9f0f5;">
                         <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
                         <h4 style="font-weight: 700; color: #0a2b3e; margin-bottom: 0.5rem;">Add-ins a medida</h4>
                         <p style="font-size: 0.85rem; color: #4a5568;">Automatizamos tareas repetitivas de modelado (Revit, ACC) con scripts y plugins personalizados.</p>
@@ -581,8 +631,8 @@
                         <h4 style="font-weight: 700; color: #0a2b3e; margin-bottom: 0.5rem;">Auditoría BIM</h4>
                         <p style="font-size: 0.85rem; color: #4a5568;">Revisamos la salud de tus modelos, estándares y procesos para certificar que cumplen ISO 19650 y Guía Nacional BIM.</p>
                     </div>
+                </div>
             </div>
-        </div>
 
             <div class="iso-footer">
                 <span>📐 Normativa MEF - Invierte.pe</span>
@@ -632,5 +682,62 @@
             <p>ZENTRYC - Modelado BIM para empresas © 2026</p>
         </div>
     </footer>
+
+    <!-- SCRIPT DEL CARRUSEL -->
+    <script>
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+            resetAutoPlay();
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        if (nextBtn && prevBtn && slides.length > 0) {
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    resetAutoPlay();
+                });
+            });
+            startAutoPlay();
+        }
+    </script>
 </body>
 </html>
