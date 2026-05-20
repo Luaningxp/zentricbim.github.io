@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ZENTRYC | Modelado BIM para empresas</title>
+    <meta name="description" content="ZENTRYC ofrece servicios profesionales de modelado BIM para empresas constructoras, estudios de arquitectura e ingeniería. Paquetes: Aprobación del Proyecto y Expediente Técnico BIM.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET Y PALETA ACTUAL ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== ENCABEZADO (mismo estilo actual) ========== */
+        header {
+            background: #0a2b3e;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: #0f3b4f;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff8c42;
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 40px;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #e07a2e;
+        }
+
+        /* ========== SECCIÓN SERVICIOS (NUEVA CON PAQUETES) ========== */
+        .servicios {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .servicios h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #0a2b3e;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .badge-obligatorio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #fff5e8;
+            border-left: 4px solid #dd6b20;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #dd6b20;
+            margin: 0 auto 2rem auto;
+            width: fit-content;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .paquetes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 2rem;
+        }
+
+        .paquete-card {
+            background: #f7fafc;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .paquete-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0.8rem;
+            border-bottom: 2px solid #e2edf7;
+        }
+
+        .titulo-paquete {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .titulo-paquete h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0a2b3e;
+        }
+
+        .icono-paquete {
+            font-size: 2.5rem;
+        }
+
+        .badge-normativa {
+            background: #eef2fa;
+            color: #0a2b3e;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.5rem 0 0.8rem;
+        }
+
+        .precio {
+            margin: 0.8rem 0;
+        }
+
+        .precio .desde {
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .precio .monto {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #0a2b3e;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card-contenido {
+            padding: 1.2rem 1.5rem 1.8rem;
+        }
+
+        .entregable-principal {
+            background: #e9f0f5;
+            padding: 0.7rem 1rem;
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #ff8c42;
+        }
+
+        .entregable-principal strong {
+            color: #0a2b3e;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .entregable-principal p {
+            font-weight: 700;
+            margin-top: 4px;
+            font-size: 0.95rem;
+        }
+
+        .lista-servicios {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .lista-servicios li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .lista-servicios li::before {
+            content: "✓";
+            color: #ff8c42;
+            font-weight: bold;
+        }
+
+        .publico {
+            background: #ffffff;
+            padding: 0.6rem 0.8rem;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            border: 1px solid #dee6ef;
+            margin: 1rem 0;
+        }
+
+        .btn-cotizar {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #ff8c42;
+            color: white;
+            font-weight: 700;
+            padding: 0.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn-cotizar:hover {
+            background: #e07a2e;
+        }
+
+        .sello-certificacion {
+            width: 130px;
+            height: 130px;
+            margin: 1.5rem auto;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .texto-curvo {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #0a2b3e;
+            line-height: 1.2;
+        }
+
+        .texto-curvo span {
+            color: #b8860b;
+        }
+
+        .centro-sello {
+            background: #f9f7f0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 5px auto;
+        }
+
+        .check-icon {
+            font-size: 1.6rem;
+        }
+
+        .iso-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #4a5568;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* ========== SOFTWARE (se mantiene) ========== */
+        .software {
+            background: #eef2f5;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .software p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #0a2b3e;
+        }
+
+        /* ========== PORTAFOLIO ========== */
+        .portafolio {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .portafolio h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #0a2b3e;
+        }
+
+        .grid-portafolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .proyecto {
+            background: #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .placeholder-img {
+            background: #cbd5e1;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .nota-portafolio {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+
+        /* ========== CONTACTO ========== */
+        .contacto {
+            background: #0a2b3e;
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .contacto h2 {
+            color: white;
+            font-size: 28px;
+        }
+
+        .contacto-info {
+            background: #0f3b4f;
+            display: inline-block;
+            padding: 20px 35px;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .contacto-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #051e2c;
+            color: #8ba0aa;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 14px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            nav a {
+                margin-left: 20px;
+                font-size: 14px;
+            }
+            .paquetes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .titulo-paquete h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO (original) -->
+    <header>
+        <div class="container">
+            <div class="logo">ZENTRYC</div>
+            <nav>
+                <a href="#servicios">Servicios</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO CON CARRUSEL DE IMÁGENES -->
+    <section class="hero-carousel">
+        <!-- Contenedor de imágenes -->
+        <div class="carousel-container">
+            <div class="carousel-slide active" style="background-image: url('./proyecto1.webp');"></div>
+            <div class="carousel-slide" style="background-image: url('./proyecto2.webp');"></div>
+            <div class="carousel-slide" style="background-image: url('./proyecto3.webp');"></div>            
+        </div>
+        
+        <!-- Overlay oscuro para legibilidad -->
+        <div class="carousel-overlay"></div>
+        
+        <!-- Flecha izquierda -->
+        <button class="carousel-btn prev" id="prevBtn">❮</button>
+        
+        <!-- Flecha derecha -->
+        <button class="carousel-btn next" id="nextBtn">❯</button>
+        
+        <!-- Indicadores (puntos) -->
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+        
+        <!-- Contenido del texto -->
+        <div class="hero-content">
+            <div class="container">
+                <h1>¿Tu próximo proyecto requiere BIM?<br>Nosotros lo implementamos.</h1>
+                <p>ZENTRYC ofrece servicios profesionales de modelado BIM para estudios de arquitectura, ingenierías y constructoras. Entregables listos para coordinación y ejecución de obra, alineados a la normativa peruana.</p>
+                <a href="#contacto" class="btn">Solicitar cotización →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SERVICIOS CON PAQUETES (nuevo contenido, paleta original) -->
+    <section id="servicios" class="servicios">
+        <div class="container">
+            <div class="badge-obligatorio">
+                📅 Prepara tus proyectos para la aplicación obligaroria de BIM!
+            </div>
+            <h2>Servicios BIM especializados</h2>
+            <div class="paquetes-grid">
+                <!-- Paquete 1 -->
+                <div class="paquete-card">
+                    <div class="card-header">
+                        <div class="titulo-paquete">
+                            <h3>"Aprobación del Proyecto"</h3>
+                            <div class="icono-paquete">📄🖥️</div>
+                        </div>
+                        <div class="badge-normativa">Fase de Formulación y Evaluación (Preinversión)</div>
+                    </div>
+                    <div class="card-contenido">
+                        <div class="entregable-principal">
+                            <strong>✔ Entregable principal</strong>
+                            <p>Modelo BIM LOD 100-200 + Plan de Ejecución BIM (PEB) - Formato N° 05 <br><small>(Incluido dentro del presupuesto, sin costo extra)</small></p>
+                        </div>
+                        <ul class="lista-servicios">
+                            <li>Modelo BIM LOD 100-200</li>
+                            <li>Metrados básicos</li>
+                            <li>Modelo federado en formato nativo</li>
+                            <li>Modelo federado para coordinación y visualización 3D</li>
+                            <li>Clash Detection básico</li>
+                            <li>Planos extraídos del modelo</li>
+                        </ul>
+                        <div class="publico">
+                            <strong>🎯 Público objetivo:</strong> Unidades Formuladoras, Consultoras de estudios, Gobiernos Regionales.
+                        </div>
+                        <a href="#contacto" class="btn-cotizar">Solicitar cotización →</a>
+                    </div>
+                </div>
+
+                <!-- Paquete 2 -->
+                <div class="paquete-card">
+                    <div class="card-header">
+                        <div class="titulo-paquete">
+                            <h3>"Expediente Técnico BIM"</h3>
+                            <div class="icono-paquete">🏗️📐</div>
+                        </div>
+                        <div class="badge-normativa">Fase de Ejecución (Expediente Técnico)</div>
+                    </div>
+                    <div class="card-contenido">
+                        <div class="entregable-principal">
+                            <strong>✔ Entregable principal</strong>
+                            <p> Modelo BIM LOD 350-400 + PEB + MIDP + TIDPs (Guía Nacional BIM)</p>
+                        </div>
+                        <ul class="lista-servicios">
+                            <li>Modelo BIM LOD 350-400</li>
+                            <li>Metrados extraídos del modelo BIM</li>
+                            <li>Modelo federado en formato nativo</li>
+                            <li>Modelo federado para coordinación y visualización 3D</li>
+                            <li>Planos extraídos del modelo BIM</li>
+                            <li>Clash Detection de alto nivel</li>
+                            <li>4D y/o 5D según se requiera</li>
+                            <li>Implementación de plataforma colaborativa en campo</li>
+                        </ul>
+                        <div class="publico">
+                            <strong>🎯 Público objetivo:</strong> Constructoras, Unidades Ejecutoras, Contratistas.
+                        </div>
+                        <a href="#contacto" class="btn-cotizar">Solicitar cotización →</a>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- NUEVA SECCIÓN: SERVICIOS ADICIONALES -->
+                    <div style="margin-top: 3rem; background: #f7fafc; border-radius: 24px; padding: 1.8rem; border: 1px solid #e2edf7;">
+                        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 700; color: #0a2b3e; text-align: center; margin-bottom: 1rem;">Servicios Adicionales de: Automatización BIM</h3>
+                        <p style="text-align: center; max-width: 800px; margin: 0 auto 1.8rem auto; color: #4a5568;">Optimizamos tus flujos de trabajo con soluciones a medida para equipos BIM exigentes.</p>
+            
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                        <div style="background: white; padding: 1.2rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #e9f0f5;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                        <h4 style="font-weight: 700; color: #0a2b3e; margin-bottom: 0.5rem;">Add-ins a medida</h4>
+                        <p style="font-size: 0.85rem; color: #4a5568;">Automatizamos tareas repetitivas de modelado (Revit, ACC) con scripts y plugins personalizados.</p>
+                    </div>
+                    <div style="background: white; padding: 1.2rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #e9f0f5;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                        <h4 style="font-weight: 700; color: #0a2b3e; margin-bottom: 0.5rem;">Control de subcontratas</h4>
+                        <p style="font-size: 0.85rem; color: #4a5568;">Gestión BIM centralizada para supervisar entregables, cumplimiento y calidad de tus proveedores.</p>
+                    </div>
+                    <div style="background: white; padding: 1.2rem; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid #e9f0f5;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+                        <h4 style="font-weight: 700; color: #0a2b3e; margin-bottom: 0.5rem;">Auditoría BIM</h4>
+                        <p style="font-size: 0.85rem; color: #4a5568;">Revisamos la salud de tus modelos, estándares y procesos para certificar que cumplen ISO 19650 y Guía Nacional BIM.</p>
+                    </div>
+            </div>
+        </div>
+
+            <div class="iso-footer">
+                <span>📐 Normativa MEF - Invierte.pe</span>
+                <span>⚙️ ISO 19650</span>
+                <span>✅ PEB incluido en presupuesto</span>
+                <span>🏅 Cumple con Guía Nacional BIM</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFTWARE -->
+    <section class="software">
+        <div class="container">
+            <h2 style="color:#0a2b3e; margin-bottom:15px;">Software BIM</h2>
+            <p>Revit · Navisworks · AutoCAD · ACC (Autodesk Construction Cloud)</p>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="portafolio">
+        <div class="container">
+            <h2>Proyectos recientes</h2>
+            <div class="grid-portafolio">
+                <div class="proyecto"><div class="placeholder-img">📐 Modelo arquitectónico LOD 350</div></div>
+                <div class="proyecto"><div class="placeholder-img">🏗️ Coordinación MEP</div></div>
+                <div class="proyecto"><div class="placeholder-img">📊 Extracción de cómputos</div></div>
+            </div>
+            <p class="nota-portafolio">(Las imágenes se reemplazarán con capturas de tus proyectos reales)</p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>¿Necesitas un modelo BIM para tu proyecto?</h2>
+            <p>Escríbeme y conversemos sobre tu requerimiento.</p>
+            <div class="contacto-info">
+                <p>📧 <strong>Correo:</strong> contacto@ZENTRYC.com</p>
+                <p>📱 <strong>WhatsApp:</strong> +51 928 383 031</p>
+                <p>🔗 <strong>LinkedIn:</strong> /in/romero-zenteno</p>
+            </div>
+        </div> 
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>ZENTRYC - Modelado BIM para empresas © 2026</p>
+        </div>
+    </footer>
+</body>
+</html>
