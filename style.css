@@ -53,25 +53,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Sección Hero */
-.hero {
-    background: #0f3b4f;
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto 30px auto;
-}
-
+/* Botón global */
 .btn {
     display: inline-block;
     background: #ff8c42;
@@ -196,37 +178,12 @@ footer {
     font-size: 14px;
 }
 
-/* Responsive: móvil */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 28px;
-    }
-    
-    .hero p {
-        font-size: 18px;
-    }
-    
-    .logo {
-        font-size: 24px;
-    }
-    
-    nav a {
-        margin-left: 20px;
-        font-size: 14px;
-    }
-    
-    h2 {
-        font-size: 26px;
-    }
-    
-    .contacto-info {
-        padding: 20px;
-    }
-    /* ========== HERO CON CARRUSEL ========== */
+/* ========== HERO CON CARRUSEL ========== */
 .hero-carousel {
     position: relative;
     height: 100vh;
     min-height: 600px;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -246,6 +203,7 @@ footer {
     height: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
 }
@@ -281,7 +239,7 @@ footer {
 .hero-content h1 {
     font-size: 48px;
     margin-bottom: 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', 'Inter', sans-serif;
 }
 
 .hero-content p {
@@ -356,5 +314,29 @@ footer {
         font-size: 20px;
         padding: 8px 14px;
     }
-}
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+    
+    nav a {
+        margin-left: 20px;
+        font-size: 14px;
+    }
+    
+    h2 {
+        font-size: 26px;
+    }
+    
+    .contacto-info {
+        padding: 20px;
+    }
 }
